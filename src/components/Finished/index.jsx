@@ -5,6 +5,7 @@ class Finished extends React.Component {
 
     handeleMark = (index) => {
         this.props.markItem(index)
+        console.log(index);
     }
 
     render() {
@@ -14,14 +15,14 @@ class Finished extends React.Component {
         return (<div>
             <br />
             {
-                arrayList.map((item, index) => <ToDoItem
+                this.props.list.map((item, index) => (item.isDone ? <ToDoItem
                     key={index}
                     value={item.inputValue}
                     delete={this.handleDelete}
                     index={index}
                     mark={this.handeleMark}
                     isDone={item.isDone}
-                />)
+                /> : ""))
             }
         </div>);
     }

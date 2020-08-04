@@ -24,6 +24,7 @@ class ToDoList extends React.Component {
     
     handeleMark = (index) =>{
         this.props.markItem(index)
+        console.log(index)
     }
 
     render() {
