@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import InputField from './components/InputField'
+import ToDoList from './components/ToDoList'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <InputField />
+        <ToDoList />
       </header>
     </div>
   );

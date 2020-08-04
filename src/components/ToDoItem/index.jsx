@@ -1,6 +1,6 @@
 import React from 'react';
 
-class DisplayBox extends React.Component {
+class ToDoItem extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -13,4 +13,4 @@ class DisplayBox extends React.Component {
     }
 }
 
-export default DisplayBox
+export default ToDoItem

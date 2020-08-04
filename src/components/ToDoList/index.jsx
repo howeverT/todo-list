@@ -1,19 +1,19 @@
 import React from 'react';
-import DisplayBox from '../DisplayBox'
+import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
-class InputField extends React.Component {
+class ToDoList extends React.Component {
     constructor(props) {
         super(props)
         this.state = { inputValue: "" };
     }
 
-    inputString = (event) => {
+    handleInputString = (event) => {
         this.setState({
             inputValue:event.target.value
         })
     }
 
-    addInputIntem = () => {
+    handleAddInputIntem = () => {
         this.props.addItem(this.state.inputValue)
         // console.log(this.props.sum)
     }
@@ -29,11 +29,11 @@ class InputField extends React.Component {
     render() {
         console.log(this.props.list);
         return <div>
-            <input type="text"  onBlur={this.inputString}></input> 
-            <button onClick={this.addInputIntem}>Add</button> 
+            <input type="text"  onBlur={this.handleInputString}></input> 
+            <button onClick={this.handleAddInputIntem}>Add</button> 
             <br />
                 {
-                    this.props.list.map((item,index) => <DisplayBox
+                    this.props.list.map((item,index) => <ToDoItem
                         key={index}
                         value = {item.inputValue}
                         delete= {this.handleDelete}
@@ -57,5 +57,5 @@ const mapDispatchToProps = dispatch => {
     }
 }
     
-export default connect(mapStateToProps, mapDispatchToProps)(InputField);
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoList);
 // export default InputFeld
