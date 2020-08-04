@@ -14,12 +14,20 @@ export default (state = initState, action) => {
                 itemList: state.itemList.filter((item, index) => action.index !== index)
             }
         case 'MARKITEM':
-            return  {itemList: state.itemList.map((item,index)=>{
-                if(index==action.index){
-                    item.isDone = !item.isDone;
-                }
-                return item;
-            })}
+            return {
+                itemList: state.itemList.map((item, index) => {
+                    if (index == action.index) {
+                        item.isDone = !item.isDone;
+                    }
+                    return item;
+                })
+            }
+        case 'FETCHITEM':
+            let result =  {
+                itemList: action.list
+            }
+            console.log('result', result)
+            return result
         default:
             return state
     }
