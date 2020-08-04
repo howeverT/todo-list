@@ -18,19 +18,22 @@ class InputField extends React.Component {
         // console.log(this.props.sum)
     }
 
-    handleDelete = () =>{
-        this.props.deleteItem()
+    handleDelete = (index) =>{
+        this.props.deleteItem(index)
     }
 
     render() {
+        console.log(this.props.list);
         return <div>
             <input type="text"  onBlur={this.inputString}></input> 
             <button onClick={this.addInputIntem}>Add</button> 
             <br />
                 {
-                    this.props.list.map(key => <DisplayBox
-                        key={key}
-                        value = {key}
+                    this.props.list.map((item,index) => <DisplayBox
+                        key={index}
+                        value = {item}
+                        delete= {this.handleDelete}
+                        index = {index}
                     />)
                 }
         </div>

@@ -3,13 +3,12 @@ import React from 'react';
 class DisplayBox extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { value: props.value};
     }
 
 
     render() {
         return <div>
-            <span>{this.state.value}<input type="button" value="delete"></input></span>
+            <span>{this.props.value}<input type="button" value="delete" onClick={() => this.props.delete(this.props.index)}></input>{this.props.index}</span>
         </div>
     }
 }
