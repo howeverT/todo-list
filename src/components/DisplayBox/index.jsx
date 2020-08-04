@@ -8,7 +8,7 @@ class DisplayBox extends React.Component {
 
     render() {
         return <div>
-            <span>{this.props.value}<input type="button" value="delete" onClick={() => this.props.delete(this.props.index)}></input>{this.props.index}</span>
+            <span  style={{ textDecorationLine: this.props.isDone ? 'line-through' : 'none' }} onClick={() => this.props.mark(this.props.index)}>{this.props.value}</span><input type="button" value="delete" onClick={() => this.props.delete(this.props.index)}></input>{this.props.index}
         </div>
     }
 }

@@ -21,6 +21,10 @@ class InputField extends React.Component {
     handleDelete = (index) =>{
         this.props.deleteItem(index)
     }
+    
+    handeleMark = (index) =>{
+        this.props.markItem(index)
+    }
 
     render() {
         console.log(this.props.list);
@@ -31,9 +35,11 @@ class InputField extends React.Component {
                 {
                     this.props.list.map((item,index) => <DisplayBox
                         key={index}
-                        value = {item}
+                        value = {item.inputValue}
                         delete= {this.handleDelete}
                         index = {index}
+                        mark = {this.handeleMark}
+                        isDone = {item.isDone}
                     />)
                 }
         </div>
@@ -45,8 +51,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addItem: (inputValue) => dispatch({type: 'ADDITEM', inputValue}),
-        deleteItem: (index) => dispatch({type: 'DELETEITEM', index})
+        addItem: (inputValue) => dispatch({type: 'ADDITEM', inputValue,isDone:false}),
+        deleteItem: (index) => dispatch({type: 'DELETEITEM', index}),
+        markItem: (index) => dispatch({type: 'MARKITEM', index})
     }
 }
     
