@@ -1,11 +1,25 @@
 import React from 'react';
 import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
+import axios from 'axios'
 class Finished extends React.Component {
 
-    handeleMark = (index) => {
-        this.props.markItem(index)
-        console.log(index);
+    handeleMark = (id,status) => {
+        let that = this;
+        axios.put('https://5e9ec500fb467500166c4658.mockapi.io/todos/' + `${id}`, {status: !status})
+        .then((response)=> {
+            that.initStoreList()
+        })
+        // this.props.markItem(index)
+        // console.log(index);
+    }
+    initStoreList =() => {
+        let that = this;
+        axios.get('https://5e9ec500fb467500166c4658.mockapi.io/todos')
+        .then((response)=> {
+            let list = response.data
+            that.props.fetchItem(list)
+        })
     }
 
     render() {
@@ -15,13 +29,14 @@ class Finished extends React.Component {
         return (<div>
             <br />
             {
-                this.props.list.map((item, index) => (item.isDone ? <ToDoItem
+                this.props.list.map((item, index) => (item.status ? <ToDoItem
                     key={index}
-                    value={item.inputValue}
+                    value={item.content}
+                    id = {item.id}
                     delete={this.handleDelete}
                     index={index}
                     mark={this.handeleMark}
-                    isDone={item.isDone}
+                    isDone={item.status}
                 /> : ""))
             }
         </div>);
@@ -36,7 +51,8 @@ const mapDispatchToProps = dispatch => {
     return {
         addItem: (inputValue) => dispatch({ type: 'ADDITEM', inputValue, isDone: false }),
         deleteItem: (index) => dispatch({ type: 'DELETEITEM', index }),
-        markItem: (index) => dispatch({ type: 'MARKITEM', index })
+        markItem: (index) => dispatch({ type: 'MARKITEM', index }),
+        fetchItem: (list) => dispatch({type: 'FETCHITEM', list})
     }
 }
 
