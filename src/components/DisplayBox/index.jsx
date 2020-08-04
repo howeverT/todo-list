@@ -1,9 +1,15 @@
 import React from 'react';
 
 class DisplayBox extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { value: 0};
+    }
+
+
     render() {
         return <div>
-            <span>1</span><input type="button" value="delete"></input>
+            <span>{this.state.value}<input type="button" value="delete"></input></span>
         </div>
     }
 }
