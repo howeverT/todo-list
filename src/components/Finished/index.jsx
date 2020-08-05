@@ -2,11 +2,12 @@ import React from 'react';
 import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
 import axios from 'axios'
+import {API} from '../../api/Api'
 class Finished extends React.Component {
 
     handeleMark = (id, status) => {
         let that = this;
-        axios.put('https://5e9ec500fb467500166c4658.mockapi.io/todos/' + `${id}`, { status: !status })
+        axios.put(API+ '/' + `${id}`, { status: !status })
             .then((response) => {
                 that.initStoreList()
             })
@@ -15,7 +16,7 @@ class Finished extends React.Component {
     }
     initStoreList = () => {
         let that = this;
-        axios.get('https://5e9ec500fb467500166c4658.mockapi.io/todos')
+        axios.get(API)
             .then((response) => {
                 let list = response.data
                 that.props.fetchItem(list)
@@ -23,9 +24,9 @@ class Finished extends React.Component {
     }
 
     render() {
-        let arrayList = this.props.list.filter((item) => item.isDone === true)
+        // let arrayList = this.props.list.filter((item) => item.isDone === true)
 
-        console.log(arrayList);
+        // console.log(arrayList);
         return (<div>
             <br />
             {
@@ -36,7 +37,7 @@ class Finished extends React.Component {
                     delete={this.handleDelete}
                     index={index}
                     mark={this.handeleMark}
-                    isDone={item.status}
+                    isDone={item.status}  //TODO on
                 /> : ""))
             }
         </div>);

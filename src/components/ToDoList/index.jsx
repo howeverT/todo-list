@@ -2,6 +2,7 @@ import React from 'react';
 import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
 import axios from 'axios'
+import {API} from '../../api/Api'
 class ToDoList extends React.Component {
     constructor(props) {
         super(props)
@@ -11,7 +12,7 @@ class ToDoList extends React.Component {
 
     initStoreList = () => {
         let that = this;
-        axios.get('https://5e9ec500fb467500166c4658.mockapi.io/todos')
+        axios.get(API)
             .then((response) => {
                 let list = response.data
                 that.props.fetchItem(list)
@@ -24,9 +25,9 @@ class ToDoList extends React.Component {
         })
     }
 
-    handleAddInputIntem = () => {
+    handleAddInputIntem = () => {  //TODO api
         let that = this;
-        axios.post('https://5e9ec500fb467500166c4658.mockapi.io/todos/', { content: this.state.inputValue })
+        axios.post(API, { content: this.state.inputValue })
             .then((response) => {
                 that.initStoreList()
             })
@@ -36,7 +37,7 @@ class ToDoList extends React.Component {
 
     handleDelete = (id) => {
         let that = this;
-        axios.delete('https://5e9ec500fb467500166c4658.mockapi.io/todos/' + `${id}`)
+        axios.delete(API+'/' + `${id}`)
             .then((response) => {
                 that.initStoreList()
             })
@@ -44,7 +45,7 @@ class ToDoList extends React.Component {
 
     handeleMark = (id, status) => {
         let that = this;
-        axios.put('https://5e9ec500fb467500166c4658.mockapi.io/todos/' + `${id}`, { status: !status })
+        axios.put(API+'/' + `${id}`, { status: !status })
             .then((response) => {
                 that.initStoreList()
             })
@@ -66,7 +67,7 @@ class ToDoList extends React.Component {
                     index={index}
                     id={item.id}
                     mark={this.handeleMark}
-                    isDone={item.status}
+                    isDone={item.status}  //TODO on
                 />)
             }
         </div>
