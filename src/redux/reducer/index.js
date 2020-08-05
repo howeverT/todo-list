@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils"
 
 const initState = {
     itemList: []
@@ -26,7 +25,6 @@ export default (state = initState, action) => {
             let result =  {
                 itemList: action.list
             }
-            console.log('result', result)
             return result
         default:
             return state
