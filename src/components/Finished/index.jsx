@@ -64,7 +64,7 @@ class Finished extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { list: state.itemList }
+    return { list: state.todo.itemList }
 };
 
 const mapDispatchToProps = dispatch => {
