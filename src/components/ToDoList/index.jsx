@@ -31,8 +31,6 @@ class ToDoList extends React.Component {
             .then((response) => {
                 that.initStoreList()
             })
-        //this.props.addItem(this.state.inputValue)
-        // console.log(this.props.sum)
     }
 
     handleDelete = (id) => {
@@ -49,8 +47,6 @@ class ToDoList extends React.Component {
             .then((response) => {
                 that.initStoreList()
             })
-        //this.props.markItem(index)
-        //console.log(index)
     }
 
     render() {

@@ -11,8 +11,6 @@ class Finished extends React.Component {
             .then((response) => {
                 that.initStoreList()
             })
-        // this.props.markItem(index)
-        // console.log(index);
     }
 
     handleDelete = (id) => {
