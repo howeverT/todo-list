@@ -14,6 +14,15 @@ class Finished extends React.Component {
         // this.props.markItem(index)
         // console.log(index);
     }
+
+    handleDelete = (id) => {
+        let that = this;
+        axios.delete(API+'/' + `${id}`)
+            .then((response) => {
+                that.initStoreList()
+            })
+    }
+
     initStoreList = () => {
         let that = this;
         axios.get(API)
@@ -24,9 +33,6 @@ class Finished extends React.Component {
     }
 
     render() {
-        // let arrayList = this.props.list.filter((item) => item.isDone === true)
-
-        // console.log(arrayList);
         return (<div>
             <br />
             {

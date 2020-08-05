@@ -13,7 +13,7 @@ class ToDoItem extends React.Component {
             </span>
             <input type="button"
                 value="delete"
-                onClick={() => this.props.delete(this.props.id)}></input>{this.props.index}
+                onClick={() => this.props.delete(this.props.id)}></input>
         </div>
     }
 }
