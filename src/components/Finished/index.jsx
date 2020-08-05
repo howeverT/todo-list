@@ -2,12 +2,12 @@ import React from 'react';
 import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
 import axios from 'axios'
-import {API} from '../../api/Api'
+import { API } from '../../api/Api'
 class Finished extends React.Component {
 
     handeleMark = (id, status) => {
         let that = this;
-        axios.put(API+ '/' + `${id}`, { status: !status })
+        axios.put(API + '/' + `${id}`, { status: !status })
             .then((response) => {
                 that.initStoreList()
             })
@@ -17,7 +17,7 @@ class Finished extends React.Component {
 
     handleDelete = (id) => {
         let that = this;
-        axios.delete(API+'/' + `${id}`)
+        axios.delete(API + '/' + `${id}`)
             .then((response) => {
                 that.initStoreList()
             })

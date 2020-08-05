@@ -2,7 +2,7 @@ import React from 'react';
 import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
 import axios from 'axios'
-import {API} from '../../api/Api'
+import { API } from '../../api/Api'
 class ToDoList extends React.Component {
     constructor(props) {
         super(props)
@@ -37,7 +37,7 @@ class ToDoList extends React.Component {
 
     handleDelete = (id) => {
         let that = this;
-        axios.delete(API+'/' + `${id}`)
+        axios.delete(API + '/' + `${id}`)
             .then((response) => {
                 that.initStoreList()
             })
@@ -45,7 +45,7 @@ class ToDoList extends React.Component {
 
     handeleMark = (id, status) => {
         let that = this;
-        axios.put(API+'/' + `${id}`, { status: !status })
+        axios.put(API + '/' + `${id}`, { status: !status })
             .then((response) => {
                 that.initStoreList()
             })

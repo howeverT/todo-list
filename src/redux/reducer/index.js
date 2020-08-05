@@ -22,7 +22,7 @@ export default (state = initState, action) => {
                 })
             }
         case 'FETCHITEM':
-            let result =  {
+            let result = {
                 itemList: action.list
             }
             return result
