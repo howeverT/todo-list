@@ -2,7 +2,7 @@ import React from 'react';
 import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
 import axios from 'axios'
-import { API } from '../../api/Api'
+import todoAPI from '../../api/Api'
 class ToDoList extends React.Component {
     constructor(props) {
         super(props)
@@ -12,7 +12,7 @@ class ToDoList extends React.Component {
 
     initStoreList = () => {
         let that = this;
-        axios.get(API)
+        todoAPI.get('')
             .then((response) => {
                 let list = response.data
                 that.props.fetchItem(list)
@@ -27,7 +27,7 @@ class ToDoList extends React.Component {
 
     handleAddInputIntem = () => {  //TODO api
         let that = this;
-        axios.post(API, { content: this.state.inputValue })
+        todoAPI.post('', { content: this.state.inputValue })
             .then((response) => {
                 that.initStoreList()
             })
@@ -35,7 +35,7 @@ class ToDoList extends React.Component {
 
     handleDelete = (id) => {
         let that = this;
-        axios.delete(API + '/' + `${id}`)
+        todoAPI.delete(`/${id}`)
             .then((response) => {
                 that.initStoreList()
             })
@@ -43,7 +43,7 @@ class ToDoList extends React.Component {
 
     handeleMark = (id, status) => {
         let that = this;
-        axios.put(API + '/' + `${id}`, { status: !status })
+        todoAPI.put(`/${id}`, { status: !status })
             .then((response) => {
                 that.initStoreList()
             })
