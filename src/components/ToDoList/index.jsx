@@ -1,7 +1,6 @@
 import React from 'react';
 import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
-import axios from 'axios'
 import todoAPI from '../../api/Api'
 class ToDoList extends React.Component {
     constructor(props) {
@@ -25,7 +24,7 @@ class ToDoList extends React.Component {
         })
     }
 
-    handleAddInputIntem = () => {  //TODO api
+    handleAddInputIntem = () => {
         let that = this;
         todoAPI.post('', { content: this.state.inputValue })
             .then((response) => {

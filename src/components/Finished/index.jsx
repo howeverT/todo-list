@@ -1,7 +1,6 @@
 import React from 'react';
 import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
-import axios from 'axios'
 import todoAPI from '../../api/Api'
 class Finished extends React.Component {
 
