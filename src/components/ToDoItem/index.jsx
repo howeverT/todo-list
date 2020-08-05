@@ -1,5 +1,7 @@
 import React from 'react';
-
+import { Button } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
+import './ToDoItem.css'
 class ToDoItem extends React.Component {
     constructor(props) {
         super(props)
@@ -7,13 +9,14 @@ class ToDoItem extends React.Component {
 
 
     render() {
-        return <div>
+        return <div class="item">
             <span style={{ textDecorationLine: this.props.isDone ? 'line-through' : 'none' }}
                 onClick={() => this.props.onMark(this.props.id, this.props.isDone)}>{this.props.value}
             </span>
-            <input type="button"
+            <Button id="delete" type="primary" shape="circle" icon={<DeleteOutlined onClick={() => this.props.onDelete(this.props.id)} />} />
+            {/* <input type="button"
                 value="delete"
-                onClick={() => this.props.onDelete(this.props.id)}></input>
+                ></input> */}
         </div>
     }
 }

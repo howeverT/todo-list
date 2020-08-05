@@ -2,6 +2,11 @@ import React from 'react';
 import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
 import todoAPI from '../../api/Api'
+import { Button } from "antd";
+import { Input } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import { List } from 'antd';
+import './ToDoList.css'
 class ToDoList extends React.Component {
     constructor(props) {
         super(props)
@@ -52,12 +57,31 @@ class ToDoList extends React.Component {
             })
     }
 
+
+
     render() {
         return <div>
-            <input type="text" onBlur={this.handleInputString}></input>
-            <button onClick={this.handleAddInputIntem}>Add</button>
+            <Input id="input" placeholder="请输入内容" prefix={<UserOutlined />} onBlur={this.handleInputString} />
+            <Button id="addButton" type="primary" shape="round" size={40} onClick={this.handleAddInputIntem}>
+                Add
+            </Button>
             <br />
-            {
+            <List id="list"
+                size="small"
+                bordered
+                dataSource={this.props.list}
+                renderItem={(item,index) => <List.Item>{<ToDoItem
+                    key={index}
+                    value={item.content}
+                    onDelete={this.handleDelete}
+                    index={index}
+                    id={item.id}
+                    onMark={this.handeleMark}
+                    isDone={item.status}
+                />}</List.Item>}
+            />
+
+            {/* {
                 this.props.list.map((item, index) => <ToDoItem
                     key={index}
                     value={item.content}
@@ -67,7 +91,7 @@ class ToDoList extends React.Component {
                     onMark={this.handeleMark}
                     isDone={item.status}
                 />)
-            }
+            } */}
         </div>
     }
 }

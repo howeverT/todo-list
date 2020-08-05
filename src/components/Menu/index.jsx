@@ -1,12 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-class Menu extends React.Component {
+import { Menu } from 'antd';
+import { Row, Col } from 'antd';
+class TopMenu extends React.Component {
     render() {
         return <div>
-            <Link to="/">All todo List</Link>&nbsp;&nbsp;&nbsp;&nbsp;
-            <Link to="/finished">Finished</Link>
+                <Menu mode="horizontal">
+                    <Menu.Item key="mail">
+                        <Link to="/">All todo List</Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Link to="/finished">Finished</Link>
+                    </Menu.Item>
+                </Menu>
         </div>
     }
 }
 
-export default Menu;
+export default TopMenu;
