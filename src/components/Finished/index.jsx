@@ -40,10 +40,10 @@ class Finished extends React.Component {
                     key={index}
                     value={item.content}
                     id={item.id}
-                    delete={this.handleDelete}
+                    onDelete={this.handleDelete}
                     index={index}
-                    mark={this.handeleMark}
-                    isDone={item.status}  //TODO on
+                    onMark={this.handeleMark}
+                    isDone={item.status}
                 /> : ""))
             }
         </div>);

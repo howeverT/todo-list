@@ -54,7 +54,6 @@ class ToDoList extends React.Component {
     }
 
     render() {
-        console.log(this.props.list);
         return <div>
             <input type="text" onBlur={this.handleInputString}></input>
             <button onClick={this.handleAddInputIntem}>Add</button>
@@ -63,16 +62,17 @@ class ToDoList extends React.Component {
                 this.props.list.map((item, index) => <ToDoItem
                     key={index}
                     value={item.content}
-                    delete={this.handleDelete}
+                    onDelete={this.handleDelete}
                     index={index}
                     id={item.id}
-                    mark={this.handeleMark}
-                    isDone={item.status}  //TODO on
+                    onMark={this.handeleMark}
+                    isDone={item.status}
                 />)
             }
         </div>
     }
 }
+
 const mapStateToProps = state => {
     return { list: state.itemList }
 };
