@@ -26,10 +26,14 @@ class ToDoList extends React.Component {
 
     handleAddInputIntem = () => {
         let that = this;
-        todoAPI.post('', { content: this.state.inputValue })
-            .then((response) => {
-                that.initStoreList()
-            })
+        if (this.state.inputValue !== "") {
+            todoAPI.post('', { content: this.state.inputValue })
+                .then((response) => {
+                    that.initStoreList()
+                    this.state.inputValue = ""
+                })
+        }
+
     }
 
     handleDelete = (id) => {
