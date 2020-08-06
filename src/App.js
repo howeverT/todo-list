@@ -13,7 +13,7 @@ class App extends React.Component {
         <header className="App-header">
           <HashRouter>
             <Spin spinning = {this.props.loading} >
-              <TopMenu></TopMenu>
+              <TopMenu />
               <Route exact path="/" component={ToDoList}></Route>
               <Route path="/finished" component={Finished}></Route>
             </Spin>

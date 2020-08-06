@@ -3,6 +3,7 @@ import ToDoItem from '../ToDoItem'
 import { connect } from 'react-redux';
 import todoAPI from '../../api/Api'
 import { List } from 'antd';
+import { ADD_ITEM , DELETE_ITEM , MARK_ITEM , FETCH_ITEM} from '../../constant/Constant'
 class Finished extends React.Component {
     constructor(props) {
         super(props)
@@ -27,7 +28,7 @@ class Finished extends React.Component {
 
     initStoreList = () => {
         let that = this;
-        todoAPI.get('')
+        todoAPI.get()
             .then((response) => {
                 let list = response.data
                 that.props.fetchItem(list)
@@ -52,17 +53,7 @@ class Finished extends React.Component {
                     isDone={item.status}
                 />}</List.Item>}
             />
-            {/* {
-                this.props.list.map((item, index) => (item.status ? <ToDoItem
-                    key={index}
-                    value={item.content}
-                    id={item.id}
-                    onDelete={this.handleDelete}
-                    index={index}
-                    onMark={this.handeleMark}
-                    isDone={item.status}
-                /> : ""))
-            } */}
+            
         </div>);
     }
 }
@@ -73,10 +64,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addItem: (inputValue) => dispatch({ type: 'ADDITEM', inputValue, isDone: false }),
-        deleteItem: (index) => dispatch({ type: 'DELETEITEM', index }),
-        markItem: (index) => dispatch({ type: 'MARKITEM', index }),
-        fetchItem: (list) => dispatch({ type: 'FETCHITEM', list })
+        addItem: (inputValue) => dispatch({ type: ADD_ITEM, inputValue, isDone: false }),
+        deleteItem: (index) => dispatch({ type: DELETE_ITEM, index }),
+        markItem: (index) => dispatch({ type: MARK_ITEM, index }),
+        fetchItem: (list) => dispatch({ type: FETCH_ITEM, list })
     }
 }
 

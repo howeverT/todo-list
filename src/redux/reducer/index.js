@@ -1,18 +1,18 @@
-
+import { ADD_ITEM , DELETE_ITEM , MARK_ITEM , FETCH_ITEM} from '../../constant/Constant'
 const initState = {
     itemList: []
 }
 export default (state = initState, action) => {
     switch (action.type) {
-        case 'ADDITEM':
+        case ADD_ITEM:
             return {
                 itemList: state.itemList.concat({ inputValue: action.inputValue, isDone: action.isDone })
             }
-        case 'DELETEITEM':
+        case DELETE_ITEM:
             return {
                 itemList: state.itemList.filter((item, index) => action.index !== index)
             }
-        case 'MARKITEM':
+        case MARK_ITEM:
             return {
                 itemList: state.itemList.map((item, index) => {
                     if (index == action.index) {
@@ -21,7 +21,7 @@ export default (state = initState, action) => {
                     return item;
                 })
             }
-        case 'FETCHITEM':
+        case FETCH_ITEM:
             let result = {
                 itemList: action.list
             }

@@ -14,9 +14,7 @@ class ToDoItem extends React.Component {
                 onClick={() => this.props.onMark(this.props.id, this.props.isDone)}>{this.props.value}
             </span>
             <Button id="delete" type="primary" shape="circle" icon={<DeleteOutlined onClick={() => this.props.onDelete(this.props.id)} />} />
-            {/* <input type="button"
-                value="delete"
-                ></input> */}
+            
         </div>
     }
 }

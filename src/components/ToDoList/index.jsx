@@ -7,6 +7,7 @@ import { Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { List } from 'antd';
 import './todolist.css'
+import { ADD_ITEM , DELETE_ITEM , MARK_ITEM , FETCH_ITEM} from '../../constant/Constant'
 class ToDoList extends React.Component {
     constructor(props) {
         super(props)
@@ -16,7 +17,7 @@ class ToDoList extends React.Component {
 
     initStoreList = () => {
         let that = this;
-        todoAPI.get('')
+        todoAPI.get()
             .then((response) => {
                 let list = response.data
                 that.props.fetchItem(list)
@@ -32,7 +33,7 @@ class ToDoList extends React.Component {
     handleAddInputIntem = () => {
         let that = this;
         if (this.state.inputValue !== "") {
-            todoAPI.post('', { content: this.state.inputValue })
+            todoAPI.post('' , { content: this.state.inputValue })
                 .then((response) => {
                     that.initStoreList()
                     this.state.inputValue = ""
@@ -70,7 +71,7 @@ class ToDoList extends React.Component {
                 size="small"
                 bordered
                 dataSource={this.props.list}
-                renderItem={(item,index) => <List.Item>{<ToDoItem
+                renderItem={(item, index) => <List.Item>{<ToDoItem
                     key={index}
                     value={item.content}
                     onDelete={this.handleDelete}
@@ -81,17 +82,7 @@ class ToDoList extends React.Component {
                 />}</List.Item>}
             />
 
-            {/* {
-                this.props.list.map((item, index) => <ToDoItem
-                    key={index}
-                    value={item.content}
-                    onDelete={this.handleDelete}
-                    index={index}
-                    id={item.id}
-                    onMark={this.handeleMark}
-                    isDone={item.status}
-                />)
-            } */}
+
         </div>
     }
 }
@@ -102,10 +93,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addItem: (inputValue) => dispatch({ type: 'ADDITEM', inputValue, isDone: false }),
-        deleteItem: (index) => dispatch({ type: 'DELETEITEM', index }),
-        markItem: (index) => dispatch({ type: 'MARKITEM', index }),
-        fetchItem: (list) => dispatch({ type: 'FETCHITEM', list })
+        addItem: (inputValue) => dispatch({ type: ADD_ITEM, inputValue, isDone: false }),
+        deleteItem: (index) => dispatch({ type: DELETE_ITEM, index }),
+        markItem: (index) => dispatch({ type: MARK_ITEM, index }),
+        fetchItem: (list) => dispatch({ type: FETCH_ITEM, list })
     }
 }
 
