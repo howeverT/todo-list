@@ -12,7 +12,7 @@ class Finished extends React.Component {
 
     handeleMark = (id, status) => {
         let that = this;
-        todoAPI.put(`/${id}`, { status: !status })
+        todoAPI.put(`/${id}`)
             .then((response) => {
                 that.initStoreList()
             })
