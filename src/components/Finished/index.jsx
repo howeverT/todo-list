@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import todoAPI from '../../api/Api'
 import { List } from 'antd';
 class Finished extends React.Component {
+    constructor(props) {
+        super(props)
+        this.initStoreList()
+    }
 
     handeleMark = (id, status) => {
         let that = this;
