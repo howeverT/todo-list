@@ -6,7 +6,7 @@ import { Button } from "antd";
 import { Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { List } from 'antd';
-import './ToDoList.css'
+import './todolist.css'
 class ToDoList extends React.Component {
     constructor(props) {
         super(props)
